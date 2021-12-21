@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 
 namespace IdentityServer
 {
@@ -40,9 +42,13 @@ namespace IdentityServer
                    config.Password.RequiredLength = 4;
                    config.Password.RequireNonAlphanumeric = false;
                    config.Password.RequireUppercase = false;
+                   config.SignIn.RequireConfirmedEmail = true;
                }).
             AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+            var mailKitOptions = Configuration.GetSection("Email").Get<MailKitOptions>();
+            services.AddMailKit(config =>  config.UseMailKit(mailKitOptions));
 
             services.ConfigureApplicationCookie(config =>
             {
