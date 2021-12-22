@@ -2,5 +2,8 @@ This project uses Asp.Net.Core.Identity.Server
 It uses userManager, Signin Manager
 
 Sending email verification functionality.
-To test email funcationality download Papercut SMTP email service - https://github.com/ChangemakerStudios/Papercut-SMTP/releases
+To test email funcationality locally download Papercut SMTP email test from below link
+
+Go to - https://github.com/ChangemakerStudios/Papercut-SMTP/releases
+Download Papercut.Smtp.Setup.exe and install 
 
